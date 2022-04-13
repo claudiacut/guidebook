@@ -25,6 +25,12 @@ function draw()
     drawRect(15,-35,20,20)
     drawRect(-35,15,70,20)
 
+    var img = new Image();
+img.onload = function() {
+    ctx.drawImage(img, -260, -2000, 48,);
+}
+img.src = "./assets/img/cards/card1.png";
+
     ctx.fillStyle = "#fff"
     drawText("Simple Pan and Zoom Canvas", -255, -100, 32, "courier")
 
