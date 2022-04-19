@@ -1,165 +1,126 @@
-let canvas = document.getElementById("canvas")
-let ctx = canvas.getContext('2d')
 
-let cameraOffset = { x: window.innerWidth/2, y: window.innerHeight/2 }
-let cameraZoom = 1
-let MAX_ZOOM = 5
-let MIN_ZOOM = 0.1
-let SCROLL_SENSITIVITY = 0.0005
+ var canvas = document.getElementsByTagName('canvas')[0];
+ canvas.width = 600; canvas.height = 600;
 
-function draw()
-{
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+ var immagine = new Image;
 
-    // Translate to the canvas centre before zooming - so you'll always zoom on what you're looking directly at
-    ctx.translate( window.innerWidth / 2, window.innerHeight / 2 )
-    ctx.scale(cameraZoom, cameraZoom)
-    ctx.translate( -window.innerWidth / 2 + cameraOffset.x, -window.innerHeight / 2 + cameraOffset.y )
-    ctx.clearRect(0,0, window.innerWidth, window.innerHeight)
-    ctx.fillStyle = "#991111"
-    drawRect(-50,-50,100,100)
+ window.onload = function(){
 
-    ctx.fillStyle = "#eecc77"
-    drawRect(-35,-35,20,20)
-    drawRect(15,-35,20,20)
-    drawRect(-35,15,70,20)
+  var ctx = canvas.getContext('2d');
 
-    var img = new Image();
-img.onload = function() {
-    ctx.drawImage(img, -260, -2000, 48,);
-}
-img.src = "./assets/img/cards/card1.png";
+  trackTransforms(ctx);
+  function redraw(){
 
-    ctx.fillStyle = "#fff"
-    drawText("Simple Pan and Zoom Canvas", -255, -100, 32, "courier")
+   ctx.save();
+   ctx.setTransform(1,0,0,1,0,0);
+   ctx.clearRect(0,0,canvas.width,canvas.height);
+   ctx.restore();
 
-    ctx.rotate(-31*Math.PI / 180)
-    ctx.fillStyle = `#${(Math.round(Date.now()/40)%4096).toString(16)}`
-    drawText("Now with touch!", -110, 100, 32, "courier")
+   ctx.drawImage(immagine, 0, 0);
 
-    ctx.fillStyle = "#fff"
-    ctx.rotate(31*Math.PI / 180)
+   ctx.save();
+  }
 
-    drawText("Wow, you found me!", -260, -2000, 48, "courier")
+  redraw();
 
-    requestAnimationFrame( draw )
-}
+  var lastX=canvas.width/2, lastY=canvas.height/2;
+  var dragStart,dragged;
+  canvas.addEventListener('mousedown',function(evt){
+   document.body.style.mozUserSelect = document.body.style.webkitUserSelect = document.body.style.userSelect = 'none';
+   lastX = evt.offsetX || (evt.pageX - canvas.offsetLeft);
+   lastY = evt.offsetY || (evt.pageY - canvas.offsetTop);
+   dragStart = ctx.transformedPoint(lastX,lastY);
+   dragged = false;
+  },false);
+  canvas.addEventListener('mousemove',function(evt){
+   lastX = evt.offsetX || (evt.pageX - canvas.offsetLeft);
+   lastY = evt.offsetY || (evt.pageY - canvas.offsetTop);
+   dragged = true;
+   if (dragStart){
+    var pt = ctx.transformedPoint(lastX,lastY);
+    ctx.translate(pt.x-dragStart.x,pt.y-dragStart.y);
+    redraw();
+   }
+  },false);
+  canvas.addEventListener('mouseup',function(evt){
+   dragStart = null;
+   if (!dragged) zoom(evt.shiftKey ? -1 : 1 );
+  },false);
 
-// Gets the relevant location from a mouse or single touch event
-function getEventLocation(e)
-{
-    if (e.touches && e.touches.length == 1)
-    {
-        return { x:e.touches[0].clientX, y: e.touches[0].clientY }
-    }
-    else if (e.clientX && e.clientY)
-    {
-        return { x: e.clientX, y: e.clientY }
-    }
-}
+  var scaleFactor = 1.1;
+  var zoom = function(clicks){
+   var pt = ctx.transformedPoint(lastX,lastY);
+   ctx.translate(pt.x,pt.y);
+   var factor = Math.pow(scaleFactor,clicks);
+   ctx.scale(factor,factor);
+   ctx.translate(-pt.x,-pt.y);
+   redraw();
+  }
 
-function drawRect(x, y, width, height)
-{
-    ctx.fillRect( x, y, width, height )
-}
+  var handleScroll = function(evt){
+   var delta = evt.wheelDelta ? evt.wheelDelta/40 : evt.detail ? -evt.detail : 0;
+   if (delta) zoom(delta);
+   return evt.preventDefault() && false;
+  };
+  canvas.addEventListener('DOMMouseScroll',handleScroll,false);
+  canvas.addEventListener('mousewheel',handleScroll,false);
+ };
+ immagine.src = '/Users/claudia/Desktop/guidebook/assets/img/canva/canva.svg';
 
-function drawText(text, x, y, size, font)
-{
-    ctx.font = `${size}px ${font}`
-    ctx.fillText(text, x, y)
-}
+ // Adds ctx.getTransform() - returns an SVGMatrix
+ // Adds ctx.transformedPoint(x,y) - returns an SVGPoint
+ function trackTransforms(ctx){
+  var svg = document.createElementNS("http://www.w3.org/2000/svg",'svg');
+  var xform = svg.createSVGMatrix();
+  ctx.getTransform = function(){ return xform; };
 
-let isDragging = false
-let dragStart = { x: 0, y: 0 }
+  var savedTransforms = [];
+  var save = ctx.save;
+  ctx.save = function(){
+   savedTransforms.push(xform.translate(0,0));
+   return save.call(ctx);
+  };
+  var restore = ctx.restore;
+  ctx.restore = function(){
+   xform = savedTransforms.pop();
+   return restore.call(ctx);
+  };
 
-function onPointerDown(e)
-{
-    isDragging = true
-    dragStart.x = getEventLocation(e).x/cameraZoom - cameraOffset.x
-    dragStart.y = getEventLocation(e).y/cameraZoom - cameraOffset.y
-}
-
-function onPointerUp(e)
-{
-    isDragging = false
-    initialPinchDistance = null
-    lastZoom = cameraZoom
-}
-
-function onPointerMove(e)
-{
-    if (isDragging)
-    {
-        cameraOffset.x = getEventLocation(e).x/cameraZoom - dragStart.x
-        cameraOffset.y = getEventLocation(e).y/cameraZoom - dragStart.y
-    }
-}
-
-function handleTouch(e, singleTouchHandler)
-{
-    if ( e.touches.length == 1 )
-    {
-        singleTouchHandler(e)
-    }
-    else if (e.type == "touchmove" && e.touches.length == 2)
-    {
-        isDragging = false
-        handlePinch(e)
-    }
-}
-
-let initialPinchDistance = null
-let lastZoom = cameraZoom
-
-function handlePinch(e)
-{
-    e.preventDefault()
-
-    let touch1 = { x: e.touches[0].clientX, y: e.touches[0].clientY }
-    let touch2 = { x: e.touches[1].clientX, y: e.touches[1].clientY }
-
-    // This is distance squared, but no need for an expensive sqrt as it's only used in ratio
-    let currentDistance = (touch1.x - touch2.x)**2 + (touch1.y - touch2.y)**2
-
-    if (initialPinchDistance == null)
-    {
-        initialPinchDistance = currentDistance
-    }
-    else
-    {
-        adjustZoom( null, currentDistance/initialPinchDistance )
-    }
-}
-
-function adjustZoom(zoomAmount, zoomFactor)
-{
-    if (!isDragging)
-    {
-        if (zoomAmount)
-        {
-            cameraZoom += zoomAmount
-        }
-        else if (zoomFactor)
-        {
-            console.log(zoomFactor)
-            cameraZoom = zoomFactor*lastZoom
-        }
-
-        cameraZoom = Math.min( cameraZoom, MAX_ZOOM )
-        cameraZoom = Math.max( cameraZoom, MIN_ZOOM )
-
-        console.log(zoomAmount)
-    }
-}
-
-canvas.addEventListener('mousedown', onPointerDown)
-canvas.addEventListener('touchstart', (e) => handleTouch(e, onPointerDown))
-canvas.addEventListener('mouseup', onPointerUp)
-canvas.addEventListener('touchend',  (e) => handleTouch(e, onPointerUp))
-canvas.addEventListener('mousemove', onPointerMove)
-canvas.addEventListener('touchmove', (e) => handleTouch(e, onPointerMove))
-canvas.addEventListener( 'wheel', (e) => adjustZoom(e.deltaY*SCROLL_SENSITIVITY))
-
-// Ready, set, go
-draw()
+  var scale = ctx.scale;
+  ctx.scale = function(sx,sy){
+   xform = xform.scaleNonUniform(sx,sy);
+   return scale.call(ctx,sx,sy);
+  };
+  var rotate = ctx.rotate;
+  ctx.rotate = function(radians){
+   xform = xform.rotate(radians*180/Math.PI);
+   return rotate.call(ctx,radians);
+  };
+  var translate = ctx.translate;
+  ctx.translate = function(dx,dy){
+   xform = xform.translate(dx,dy);
+   return translate.call(ctx,dx,dy);
+  };
+  var transform = ctx.transform;
+  ctx.transform = function(a,b,c,d,e,f){
+   var m2 = svg.createSVGMatrix();
+   m2.a=a; m2.b=b; m2.c=c; m2.d=d; m2.e=e; m2.f=f;
+   xform = xform.multiply(m2);
+   return transform.call(ctx,a,b,c,d,e,f);
+  };
+  var setTransform = ctx.setTransform;
+  ctx.setTransform = function(a,b,c,d,e,f){
+   xform.a = a;
+   xform.b = b;
+   xform.c = c;
+   xform.d = d;
+   xform.e = e;
+   xform.f = f;
+   return setTransform.call(ctx,a,b,c,d,e,f);
+  };
+  var pt  = svg.createSVGPoint();
+  ctx.transformedPoint = function(x,y){
+   pt.x=x; pt.y=y;
+   return pt.matrixTransform(xform.inverse());
+  }
+ }
