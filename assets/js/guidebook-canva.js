@@ -1,6 +1,6 @@
 
  var canvas = document.getElementsByTagName('canvas')[0];
- canvas.width = 600; canvas.height = 600;
+ canvas.width = 1200; canvas.height = 600;
 
  var immagine = new Image;
 
@@ -65,7 +65,7 @@
   canvas.addEventListener('DOMMouseScroll',handleScroll,false);
   canvas.addEventListener('mousewheel',handleScroll,false);
  };
- immagine.src = '/Users/claudia/Desktop/guidebook/assets/img/canva/canva.svg';
+ immagine.src = '/Users/claudia/Desktop/guidebook/assets/img/canva/canva.png';
 
  // Adds ctx.getTransform() - returns an SVGMatrix
  // Adds ctx.transformedPoint(x,y) - returns an SVGPoint
