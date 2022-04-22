@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An impressive and flawless site template that includes various UI elements and countless features, attractive ready-made blocks and rich pages, basically everything you need to create a unique and professional website.">
+  <meta name="keywords" content="bootstrap 5, business, corporate, creative, gulp, marketing, minimal, modern, multipurpose, one page, responsive, saas, sass, seo, startup">
+  <meta name="author" content="elemis">
+  <title>Guidebook for Conversational Agents for the Web</title>
+  <link rel="shortcut icon" href="./assets/img/favicon.png">
+  <link rel="stylesheet" href="./assets/css/plugins.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/colors/orange.css">
+  <link rel="stylesheet" href="./assets/css/mycss.css">
+
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <header class="wrapper bg-light">
+      <nav class="navbar navbar-expand-lg center-nav transparent navbar-light">
+        <div class="container flex-lg-row flex-nowrap align-items-center">
+          <div class="navbar-brand w-100">
+            <a href="./index.html">
+              <img src="./assets/img/logo.png" srcset="./assets/img/logo@2x.png 2x" alt="" / style="width:20%;">
+            </a>
+          </div>
+          <div class="navbar-collapse offcanvas-nav">
+            <div class="offcanvas-header d-lg-none d-xl-none">
+              <a href="./index.html"><img src="./assets/img/logo.png" srcset="./assets/img/logo@2x.png 2x" alt="" /></a>
+              <button type="button" class="btn-close btn-close-white offcanvas-close offcanvas-nav-close" aria-label="Close"></button>
+            </div>
+            <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="./projects.html">Guidebook Cards</a></li>
+              <li class="nav-item"><a class="nav-link" href="./blog.html">Guidebook Database</a></li>
+              <!-- <li class="nav-item"><a class="nav-link" href="#!"></a>
+
+              </li> -->
+
+              <li class="nav-item"><a class="nav-link" href="#!">About Project</a>
+
+              </li>
+
+              <li class="nav-item"><a class="nav-link" href="./docs/index.html">Related Work</a>
+
+                <!--/.dropdown-menu -->
+              </li>
+            </ul>
+            <!-- /.navbar-nav -->
+          </div>
+            <!-- /.navbar-collapse -->
+
+            <!-- /.navbar-other -->
+          </div>
+          <!-- /.navbar-collapse-wrapper -->
+        </div>
+        <!-- /.container -->
+      </nav>
+      <!-- /.navbar -->
+
+      <!-- /.offcanvas-info -->
+    </header>
+    <!-- /header -->
+
+    <!--/.modal -->
+    <section class="wrapper bg-soft-primary">
+      <div class="container pt-10 pb-15 pt-md-14 pb-md-20">
+        <div class="row gx-lg-8 gx-xl-12 gy-10 mb-5 align-items-center">
+          <div class="col-md-10 offset-md-1 offset-lg-0 col-lg-5 text-center text-lg-start order-2 order-lg-0" data-cues="slideInDown" data-group="page-title" data-delay="600">
+            <h1 class="display-1 mb-5 mx-md-n5 mx-lg-0">Guidebook for Conversational Agents for the Web</h1>
+            <p class="lead fs-lg mb-7">A thorough study of habits and challenges of BVI people and first guidelines to improve the Web Browsing Experience</p>
+            <div class="d-flex justify-content-center justify-content-lg-start" data-cues="slideInDown" data-group="page-title-buttons" data-delay="900">
+              <span><a href="./projects.html" class="btn btn-violet rounded-pill" style="margin-right: 20px;">See Guidelines</a></span>
+
+              <span><a class="btn btn-soft-violet rounded-pill" href="#learnmore">Learn More</a></span>
+            </div>
+          </div>
+          <!-- /column -->
+          <div class="col-lg-7" data-cue="slideInDown">
+            <figure><img class="w-auto" src="./assets/img/illustrations/cards.png" srcset="./assets/img/illustrations/cards.png 2x" alt="" /></figure>
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+    </section>
+    <!-- /section -->
+    <section class="wrapper bg-light">
+
+      <div class="container py-14 py-md-16 pb-md-17">
+
+        <div class="grid grid-view projects-tiles">
+          <div class="project">
+            <a name="learnmore"> <div class="row gx-md-8 gx-xl-12 gy-10 gy-md-12 isotope"></a>
+              <div class="item col-md-6 mt-md-7 mt-lg-15">
+                <div class="project-details d-flex justify-content-center align-self-end flex-column ps-0 pb-0">
+                  <div class="post-header">
+                    <h1 class="display-4 mb-4 pe-xxl-15">About this project</h1>
+                    <!-- <p class="lead fs-lg mb-0">We love to turn ideas into beautiful things.</p> -->
+                  </div>
+                  <!-- /.post-header -->
+                </div>
+                <!-- /.project-details -->
+              </div>
+              <!-- /.item -->
+               <div class="item col-md-6">
+                <figure class="lift rounded mb-6"> <img src="./assets/img/photos/rp1.jpg" srcset="./assets/img/illustrations/guidelines-home.png 2x" alt="" /></a></figure>
+                <div class="display-4 mb-4 pe-xxl-15">What are these guidelines?</div>
+                <h2 class="lead fs-lg mb-0">The cards give instructions on how to realize CAs for translating the Web experience from
+a visual to a conversational navigation</h2>
+              </div>
+
+              <!-- /.item -->
+              <div class="item col-md-6" style="top: 326.797px;">
+                <figure class="lift rounded mb-6"> <img src="./assets/img/photos/user.png" srcset="./assets/img/photos/user.png 2x" alt="" /></a></figure>
+                <div class="display-4 mb-4 pe-xxl-15">Where did the research start?</div>
+                <h2 class="lead fs-lg mb-0">We conducted research with blind and visually impaired (BVI) users to identify which parts of screen reader web browsing are frustrating, and in general what can be improved</h2>
+              </div>
+              <!-- /.item -->
+              <div class="item col-md-6">
+                <figure class="lift rounded mb-6"> <img src="./assets/img/photos/rp3.jpg" srcset="./assets/img/illustrations/challenges.png 2x" alt="" /></a></figure>
+                <div class="display-4 mb-4 pe-xxl-15">How where the guidelines found?</div>
+                <h2 class="lead fs-lg mb-0">Starting from the user research, we were able to identify a total of 6 challenges that user experience while using screen reader and CAs for Web Navigation</h2>
+              </div>
+              <!-- /.item -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.project -->
+        </div>
+
+
+        <!--/.row -->
+
+        <!--/.row -->
+
+        <!--/.row -->
+      </div>
+      <!-- /.container -->
+    </section>
+    <!-- /section -->
+
+    <!-- /section -->
+
+    <!-- /section -->
+    <section class="wrapper bg-soft-primary">
+      <div class="container py-14 py-md-17">
+        <div class="row gx-lg-8 gx-xl-12 gy-10 align-items-center">
+          <div class="col-lg-7">
+            <figure><img class="w-auto" src="./assets/img/illustrations/i5.png" srcset="./assets/img/illustrations/i5@2x.png 2x" alt="" /></figure>
+          </div>
+          <!--/column -->
+          <div class="col-lg-5">
+            <h3 class="display-4 mb-7">You want to see more? Check the complete Guidebook</h3>
+            <div class="d-flex justify-content-center justify-content-lg-start" data-cues="slideInDown" data-group="page-title-buttons" data-delay="900">
+              <span><a href="./projects.html" class="btn btn-violet rounded-pill" style="margin-right: 20px;">Complete Guidebook</a></span>
+
+
+            </div>
+
+              <!-- <div>
+                <div class="icon text-primary fs-28 me-4 mt-n1"> <i class="uil uil-location-pin-alt"></i> </div>
+              </div>
+              <div>
+                <h5 class="mb-1">Address</h5>
+                <address>Moonshine St. 14/05 Light City, London</address>
+              </div>
+            </div> -->
+            <!-- <div class="d-flex flex-row">
+              <div>
+                <div class="icon text-primary fs-28 me-4 mt-n1"> <i class="uil uil-phone-volume"></i> </div>
+              </div>
+              <div>
+                <h5 class="mb-1">Phone</h5>
+                <p>00 (123) 456 78 90</p>
+              </div>
+            </div>
+            <div class="d-flex flex-row">
+              <div>
+                <div class="icon text-primary fs-28 me-4 mt-n1"> <i class="uil uil-envelope"></i> </div>
+              </div>
+              <div>
+                <h5 class="mb-1">E-mail</h5>
+                <p class="mb-0"><a href="mailto:sandbox@email.com" class="link-body">sandbox@email.com</a></p>
+              </div>
+            </div> -->
+
+          <!--/column -->
+        </div>
+        <!--/.row -->
+      </div>
+      <!-- /.container -->
+    </section>
+    <!-- /section -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="text-inverse" style="background-color: #F6E4FF;">
+    <div class="container py-13 py-md-15">
+      <div class="row gy-6 gy-lg-0">
+        <div class="col-md-6 col-lg-6">
+          <div class="widget">
+            <img class="mb-4" src="./assets/img/logo.png" srcset="./assets/img/logo@2x.png 2x" alt="" />
+            <p class="mb-8 text-ch2">© Cutrupi Claudia Maria | Research Thesis <br class="d-none d-lg-block" />All rights reserved.</p>
+            <!-- <nav class="nav social social-white">
+              <a href="#"><i class="uil uil-twitter"></i></a>
+              <a href="#"><i class="uil uil-facebook-f"></i></a>
+              <a href="#"><i class="uil uil-dribbble"></i></a>
+              <a href="#"><i class="uil uil-instagram"></i></a>
+              <a href="#"><i class="uil uil-youtube"></i></a>
+            </nav> -->
+
+          </div>
+
+        </div>
+
+        <!-- /column -->
+        <div class="col-md-6 col-lg-6 justify-content-end">
+          <div class="widget justify-content-end">
+            <!-- <img src="./assets/img/cards/logo.png" align="right" srcset="./assets/img/logo@2x.png 2x" alt="" /> -->
+            <p class="mb-8 text-ch2 d-flex flex-row-reverse pt-12"> Dipartimento di Elettronica, <br>Informazione e Bioingegneria <br class="d-none d-lg-block" />Supervisor Maristella Matera</p>
+            <!-- <nav class="nav social social-white">
+              <a href="#"><i class="uil uil-twitter"></i></a>
+              <a href="#"><i class="uil uil-facebook-f"></i></a>
+              <a href="#"><i class="uil uil-dribbble"></i></a>
+              <a href="#"><i class="uil uil-instagram"></i></a>
+              <a href="#"><i class="uil uil-youtube"></i></a>
+            </nav> -->
+
+          </div>
+
+        </div>
+
+        <!-- /column -->
+      </div>
+      <!--/.row -->
+    </div>
+    <!-- /.container -->
+  </footer>
+  <div class="progress-wrap">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+    </svg>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+  <script src="./assets/js/plugins.js"></script>
+  <script src="./assets/js/theme.js"></script>
+</body>
+
+</html>
