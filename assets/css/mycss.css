@@ -73,7 +73,7 @@ html {
 #canvas{
   display:block;
   margin:1em auto;
-  background:#fff;
+  background:#f5f5f5;
   border:1px solid #ccc;
 }
 

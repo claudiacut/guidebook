@@ -15,7 +15,7 @@ var canvas = document.getElementsByTagName('canvas')[0];
    ctx.clearRect(0,0,canvas.width,canvas.height);
    ctx.restore();
 
-   ctx.drawImage(immagine, -500, 100);
+   ctx.drawImage(immagine, -200, 100);
 
    ctx.save();
   }
@@ -64,7 +64,7 @@ var canvas = document.getElementsByTagName('canvas')[0];
   canvas.addEventListener('DOMMouseScroll',handleScroll,false);
   canvas.addEventListener('mousewheel',handleScroll,false);
  };
- immagine.src = '/Users/claudia/Desktop/guidebook/assets/img/canva/canva.svg';
+ immagine.src = '/Users/claudia/Desktop/guidebook/assets/img/canva/canvaa.svg';
 
  // Adds ctx.getTransform() - returns an SVGMatrix
  // Adds ctx.transformedPoint(x,y) - returns an SVGPoint
